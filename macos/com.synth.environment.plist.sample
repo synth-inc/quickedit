@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  com.synth.environment.plist.sample
+  ====================================
+  Sets the Azure environment variable at the OS level so it is
+  available to GUI apps (both the built .app and Xcode-launched debug builds).
+
+  SETUP:
+  1. Copy this file:
+       cp macos/com.synth.environment.plist.sample ~/Library/LaunchAgents/com.synth.environment.plist
+
+  2. Edit ~/Library/LaunchAgents/com.synth.environment.plist and replace all
+     placeholder values (YOUR_*) with your actual keys.
+
+  3. Load it:
+       launchctl load ~/Library/LaunchAgents/com.synth.environment.plist
+
+  4. Re-run the app (or restart Xcode). No reboot needed.
+
+  UPDATING VALUES:
+  Edit the file, then reload:
+       launchctl unload ~/Library/LaunchAgents/com.synth.environment.plist
+       launchctl load ~/Library/LaunchAgents/com.synth.environment.plist
+
+  WHERE TO GET KEYS:
+  - AZURE_NON_AX_TRIGGER_SAS_KEY  → Azure portal (ask team lead)
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.synth.environment</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/sh</string>
+        <string>-c</string>
+        <string>
+            launchctl setenv AZURE_NON_AX_TRIGGER_SAS_KEY "YOUR_AZURE_NON_AX_TRIGGER_SAS_KEY";
+        </string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>

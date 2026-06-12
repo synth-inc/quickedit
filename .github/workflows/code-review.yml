@@ -1,0 +1,340 @@
+#
+#  code-review.yml
+#  onit-beacon
+#
+#  Created by Kévin Naudin on 2026-03-12.
+#
+
+name: Onit Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: code-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Fetch before SHA for incremental review
+        if: ${{ github.event.action == 'synchronize' }}
+        run: git fetch origin ${{ github.event.before }} --depth=1
+
+      - name: Get diff for review
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_ACTION: ${{ github.event.action }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.event.after }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Patterns to exclude from review
+          EXCLUDE_PATTERNS=(
+            '*.lock'
+            '*.pbxproj'
+            '*.xcworkspacedata'
+            '*.generated.*'
+            '*.asset'
+            '*.png'
+            '*.jpg'
+            '*.gif'
+            '*.ico'
+            '*.pdf'
+            'Pods/*'
+            'node_modules/*'
+            '*.xcodeproj/*'
+            'datasets/*'
+          )
+
+          PATHSPEC_ARGS=""
+          for pattern in "${EXCLUDE_PATTERNS[@]}"; do
+            PATHSPEC_ARGS="$PATHSPEC_ARGS ':!$pattern'"
+          done
+
+          # Check if this PR has been reviewed before (sticky comment exists)
+          FIRST_REVIEW=true
+          if gh api "repos/${{ github.repository }}/issues/${PR_NUMBER}/comments" \
+               --paginate --jq '.[].body' 2>/dev/null | grep -q '<!-- onit-code-review -->'; then
+            FIRST_REVIEW=false
+          fi
+
+          if [ "$EVENT_ACTION" = "synchronize" ] && [ "$FIRST_REVIEW" = false ]; then
+            # Incremental: only review new commits
+            echo "Reviewing commits ${BEFORE_SHA:0:7}..${AFTER_SHA:0:7}"
+            eval git diff "$BEFORE_SHA".."$AFTER_SHA" -- . $PATHSPEC_ARGS > pr_diff.txt
+            eval git diff "$BEFORE_SHA".."$AFTER_SHA" --name-only -- . $PATHSPEC_ARGS > changed_files.txt
+            echo "incremental" > review_scope.txt
+          else
+            echo "Reviewing full PR #$PR_NUMBER"
+            gh pr diff "$PR_NUMBER" > full_diff.txt
+            gh pr diff "$PR_NUMBER" --name-only > all_files.txt
+
+            # Filter excluded patterns from gh pr diff output
+            cp full_diff.txt pr_diff.txt
+            > changed_files.txt
+            while IFS= read -r file; do
+              skip=false
+              for pattern in "${EXCLUDE_PATTERNS[@]}"; do
+                case "$file" in $pattern) skip=true; break ;; esac
+              done
+              if [ "$skip" = false ]; then
+                echo "$file" >> changed_files.txt
+              fi
+            done < all_files.txt
+
+            echo "full" > review_scope.txt
+          fi
+
+          # Skip review if diff is empty
+          if [ ! -s pr_diff.txt ]; then
+            echo "No reviewable changes found"
+            echo "skip" > review_scope.txt
+            exit 0
+          fi
+
+          # Truncate large diffs to stay within token limits (~200KB)
+          if [ $(wc -c < pr_diff.txt) -gt 200000 ]; then
+            truncate -s 200000 pr_diff.txt
+            echo -e "\n\n⚠️ Diff truncated (exceeded 200KB limit)" >> pr_diff.txt
+          fi
+
+      - name: Run Claude review
+        if: ${{ success() }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          # Skip if no reviewable changes
+          if [ -f review_scope.txt ] && [ "$(cat review_scope.txt)" = "skip" ]; then
+            echo '{"summary": "✅ No reviewable changes — skipped.", "comments": []}' > review_output.json
+            exit 0
+          fi
+
+          python3 - <<'PYTHON_SCRIPT'
+          import json, os, urllib.request, urllib.error
+
+          diff = open("pr_diff.txt").read()
+          files = open("changed_files.txt").read()
+          pr_title = os.environ.get("PR_TITLE", "")
+          pr_body = os.environ.get("PR_BODY", "")
+          review_scope = open("review_scope.txt").read().strip()
+
+          scope_hint = ""
+          if review_scope == "incremental":
+              scope_hint = """
+          **IMPORTANT: This is an incremental review of newly pushed commits only, not the full PR.**
+          Only review the changes shown in the diff below. Do not flag issues in code that is not part of this diff."""
+
+          prompt = f"""You are an expert code reviewer for a macOS/Swift and Python project called Onit (voice transcription app).
+
+          Review the following changes and provide actionable, inline feedback.
+          {scope_hint}
+
+          ## Rules
+          - Focus on: bugs, security issues, performance problems, logic errors, race conditions, data loss risks
+          - Ignore: style/formatting (we use swift-format and black), import ordering, minor naming preferences
+          - Be thorough but precise — flag real issues, skip speculative ones
+          - Write your review in English
+          - Do NOT mention that you are an AI
+
+          ## Swift-specific context (avoid false positives)
+          - `@MainActor` classes: all methods and property accesses run on the main actor. Do not flag race conditions or missing `MainActor.run` for code inside `@MainActor` classes.
+          - Value types (`[Float]`, `Int`, `String`, structs): no retain cycles possible. Do not flag memory leaks on value types.
+          - `Optional<T>`: assigning `nil` to an Optional property is valid Swift and cannot crash.
+          - Before flagging a missing annotation (`@Published`, `@MainActor`, etc.), verify it is truly absent from the diff context lines — it may appear in nearby unchanged lines.
+
+          ## Output Format
+
+          You MUST respond with valid JSON only, no markdown fences, no extra text.
+
+          If the code looks good with no issues, respond with:
+          {{"summary": "✅ No issues found — LGTM!", "comments": []}}
+
+          Otherwise, respond with:
+          {{
+            "summary": "Brief overall assessment",
+            "comments": [
+              {{
+                "path": "relative/path/to/file.swift",
+                "line": <line number in the NEW version of the file where the issue is>,
+                "severity": "critical|suggestion",
+                "body": "Description of the issue and suggested fix"
+              }}
+            ]
+          }}
+
+          ## Important for line numbers
+          - Use the line numbers from the RIGHT side of the diff (lines with + prefix or unchanged lines)
+          - The "line" field must be the line number in the new version of the file
+          - Only comment on lines that appear in the diff (added or context lines)
+
+          ## PR Info
+          **Title:** {pr_title}
+          **Description:** {pr_body}
+
+          ## Changed Files
+          {files}
+
+          ## Diff
+          ```diff
+          {diff}
+          ```"""
+
+          payload = json.dumps({
+              "model": "claude-sonnet-4-20250514",
+              "max_tokens": 4096,
+              "messages": [{"role": "user", "content": prompt}]
+          }).encode()
+
+          req = urllib.request.Request(
+              "https://api.anthropic.com/v1/messages",
+              data=payload,
+              headers={
+                  "Content-Type": "application/json",
+                  "x-api-key": os.environ["ANTHROPIC_API_KEY"],
+                  "anthropic-version": "2023-06-01",
+              },
+          )
+
+          try:
+              with urllib.request.urlopen(req, timeout=120) as resp:
+                  data = json.loads(resp.read())
+                  review = data["content"][0]["text"]
+          except urllib.error.HTTPError as e:
+              body = e.read().decode()
+              review = json.dumps({"summary": f"❌ API Error ({e.code}): {body}", "comments": []})
+          except Exception as e:
+              review = json.dumps({"summary": f"❌ Error: {e}", "comments": []})
+
+          with open("review_output.json", "w") as f:
+              f.write(review)
+          PYTHON_SCRIPT
+
+      - name: Post review
+        if: ${{ success() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PYTHON_SCRIPT'
+          import json, os, re, subprocess
+
+          pr_number = os.environ["PR_NUMBER"]
+          commit_sha = os.environ["COMMIT_SHA"]
+          repo = os.environ["GITHUB_REPO"]
+
+          MARKER = "<!-- onit-code-review -->"
+
+          raw = open("review_output.json").read().strip()
+
+          # Strip markdown code fences if Claude wrapped the JSON in them
+          fence_match = re.search(r'```(?:json)?\s*\n?(.*?)\n?```', raw, re.DOTALL)
+          if fence_match:
+              raw = fence_match.group(1).strip()
+
+          try:
+              review = json.loads(raw)
+          except json.JSONDecodeError:
+              body = f"{MARKER}\n## 🔍 Onit Code Review\n\n{raw}\n\n---\n<sub>Automated review · {commit_sha[:7]}</sub>"
+              upsert_sticky_comment(pr_number, repo, body, MARKER)
+              raise SystemExit(0)
+
+          summary = review.get("summary", "")
+          comments = review.get("comments", [])
+
+          severity_icons = {"critical": "🔴", "suggestion": "🟡"}
+
+          review_body = f"{MARKER}\n## 🔍 Onit Code Review\n\n{summary}\n\n---\n<sub>Automated review · {commit_sha[:7]}</sub>"
+
+          def find_sticky_comment(pr_number, repo, marker):
+              """Find existing bot comment with our marker."""
+              result = subprocess.run(
+                  ["gh", "api", f"repos/{repo}/issues/{pr_number}/comments",
+                   "--paginate", "--jq", f'[.[] | select(.body | contains("{marker}"))][0].id'],
+                  capture_output=True, text=True,
+              )
+              comment_id = result.stdout.strip()
+              if comment_id and comment_id != "null":
+                  return comment_id
+              return None
+
+          def upsert_sticky_comment(pr_number, repo, body, marker):
+              """Create or update a sticky comment."""
+              comment_id = find_sticky_comment(pr_number, repo, marker)
+              with open("comment_body.txt", "w") as f:
+                  f.write(body)
+              if comment_id:
+                  subprocess.run(
+                      ["gh", "api", f"repos/{repo}/issues/comments/{comment_id}",
+                       "--method", "PATCH", "--field", f"body=@comment_body.txt"],
+                      check=True,
+                  )
+                  print(f"Updated existing comment {comment_id}")
+              else:
+                  subprocess.run(
+                      ["gh", "pr", "comment", pr_number, "--body-file", "comment_body.txt"],
+                      check=True,
+                  )
+                  print("Created new comment")
+
+          if not comments:
+              upsert_sticky_comment(pr_number, repo, review_body, MARKER)
+          else:
+              # Build inline comments for the GitHub review API
+              gh_comments = []
+              for c in comments:
+                  icon = severity_icons.get(c.get("severity", ""), "💬")
+                  body = f"**{icon} {c.get('severity', 'comment').capitalize()}**\n\n{c.get('body', '')}"
+                  gh_comments.append({
+                      "path": c["path"],
+                      "line": c["line"],
+                      "body": body,
+                  })
+
+              api_payload = {
+                  "commit_id": commit_sha,
+                  "body": review_body,
+                  "event": "COMMENT",
+                  "comments": gh_comments,
+              }
+
+              with open("review_payload.json", "w") as f:
+                  json.dump(api_payload, f)
+
+              result = subprocess.run(
+                  ["gh", "api", f"repos/{repo}/pulls/{pr_number}/reviews",
+                   "--method", "POST", "--input", "review_payload.json"],
+                  capture_output=True, text=True,
+              )
+
+              if result.returncode != 0:
+                  print(f"Review API failed: {result.stderr}")
+                  # Fallback: post inline issues as sticky comment
+                  fallback = review_body + "\n\n### Inline Comments\n\n"
+                  for c in comments:
+                      icon = severity_icons.get(c.get("severity", ""), "💬")
+                      fallback += f"- {icon} **{c['path']}:{c['line']}** — {c.get('body', '')}\n"
+                  upsert_sticky_comment(pr_number, repo, fallback, MARKER)
+              else:
+                  print("Review posted with inline comments")
+                  # Also update sticky comment with summary only
+                  upsert_sticky_comment(pr_number, repo, review_body, MARKER)
+          PYTHON_SCRIPT
