@@ -6,21 +6,6 @@
 #  Created by Kévin Naudin on 2026-01-23.
 #
 
-SECRETS_FILE="macos/OnitQuickEdit/Secrets.xcconfig"
-SECRETS_BACKUP="macos/OnitQuickEdit/Secrets.xcconfig.backup"
-SECRETS_SAMPLE="macos/OnitQuickEdit/Secrets.xcconfig.sample"
-
-# If Secrets.xcconfig was deleted during checkout, restore it
-if [ ! -f "$SECRETS_FILE" ]; then
-    if [ -f "$SECRETS_BACKUP" ]; then
-        cp "$SECRETS_BACKUP" "$SECRETS_FILE"
-        echo "✓ Secrets.xcconfig restored from backup"
-    elif [ -f "$SECRETS_SAMPLE" ]; then
-        cp "$SECRETS_SAMPLE" "$SECRETS_FILE"
-        echo "⚠ Secrets.xcconfig created from sample - please fill in your values"
-    fi
-fi
-
 # Update submodules after checkout
 # --init: Initialize any submodules not yet initialized
 # --recursive: Also update nested submodules

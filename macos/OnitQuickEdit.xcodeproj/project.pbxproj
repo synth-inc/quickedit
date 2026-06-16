@@ -270,7 +270,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Onit/Secrets.xcconfig",
 			);
 			name = "Environment Checks";
 			outputFileListPaths = (
@@ -279,7 +278,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# ============================================\n# Git Hooks Check\n# ============================================\necho \"🔧 Checking git hooks configuration...\"\n\nREPO_ROOT=$(cd \"${SRCROOT}/..\" && git rev-parse --show-toplevel 2>/dev/null || echo \"\")\n\nif [ -n \"$REPO_ROOT\" ]; then\n    HOOKS_PATH=$(cd \"$REPO_ROOT\" && git config core.hooksPath 2>/dev/null || echo \"\")\n    \n    if [ \"$HOOKS_PATH\" != \".githooks\" ]; then\n        echo \"error: \"\n        echo \"error: ════════════════════════════════════════════════════════════\"\n        echo \"error:  👋 Welcome to the Onit team!\"\n        echo \"error: ════════════════════════════════════════════════════════════\"\n        echo \"error: \"\n        echo \"error:  One last step before you can build:\"\n        echo \"error: \"\n        echo \"error:  Run this command from the repository root:\"\n        echo \"error: \"\n        echo \"error:      ./.githooks/install.sh\"\n        echo \"error: \"\n        echo \"error:  This configures git hooks for the team workflow.\"\n        echo \"error: \"\n        echo \"error: ════════════════════════════════════════════════════════════\"\n        echo \"error: \"\n        exit 1\n    else\n        echo \"✓ Git hooks configured\"\n    fi\nelse\n    echo \"error: ❌ Not in a git repository\"\n    exit 1\nfi\n\n# ============================================\n# Secrets Check\n# ============================================\necho \"🔐 Checking secrets configuration...\"\n\n# Check if GH_READONLY_TOKEN is available in build settings\nif [ -z \"$GH_READONLY_TOKEN\" ]; then\n    echo \"error: ❌ GH_READONLY_TOKEN not found in build settings\"\n    echo \"error: 📝 Make sure Secrets.xcconfig is:\"\n    echo \"error:    1. Created at ${SRCROOT}/Onit/Secrets.xcconfig\"\n    echo \"error:    2. Contains: GH_READONLY_TOKEN = <your_plain_text_token>\"\n    echo \"error:    3. Assigned in Project Settings → Info → Configurations\"\n    exit 1\nfi\n\necho \"✓ GH_READONLY_TOKEN is configured\"\n\n# Check if GITHUB_REPO is available in build settings\nif [ -z \"$GITHUB_REPO\" ]; then\n    echo \"error: ❌ GITHUB_REPO not found in build settings\"\n    echo \"error: 📝 Make sure Secrets.xcconfig contains:\"\n    echo \"error:    GITHUB_REPO = synth-inc/onit-brain\"\n    exit 1\nfi\n\necho \"✓ GITHUB_REPO is configured: $GITHUB_REPO\"\n\n# Verify that Secrets.xcconfig file exists\nSECRETS_FILE=\"${SRCROOT}/Onit/Secrets.xcconfig\"\nif [ ! -f \"$SECRETS_FILE\" ]; then\n    echo \"warning: ⚠️  Secrets.xcconfig file not found at expected location\"\n    echo \"warning: 💡 But build settings are configured, so build will proceed\"\nfi\n\necho \"✅ All environment checks passed!\"\n";
+			shellScript = "set -e\n\n# ============================================\n# Git Hooks Check\n# ============================================\necho \"🔧 Checking git hooks configuration...\"\n\nREPO_ROOT=$(cd \"${SRCROOT}/..\" && git rev-parse --show-toplevel 2>/dev/null || echo \"\")\n\nif [ -n \"$REPO_ROOT\" ]; then\n    HOOKS_PATH=$(cd \"$REPO_ROOT\" && git config core.hooksPath 2>/dev/null || echo \"\")\n    \n    if [ \"$HOOKS_PATH\" != \".githooks\" ]; then\n        echo \"error: \"\n        echo \"error: ════════════════════════════════════════════════════════════\"\n        echo \"error:  👋 Welcome to the Onit team!\"\n        echo \"error: ════════════════════════════════════════════════════════════\"\n        echo \"error: \"\n        echo \"error:  One last step before you can build:\"\n        echo \"error: \"\n        echo \"error:  Run this command from the repository root:\"\n        echo \"error: \"\n        echo \"error:      ./.githooks/install.sh\"\n        echo \"error: \"\n        echo \"error:  This configures git hooks for the team workflow.\"\n        echo \"error: \"\n        echo \"error: ════════════════════════════════════════════════════════════\"\n        echo \"error: \"\n        exit 1\n    else\n        echo \"✓ Git hooks configured\"\n    fi\nelse\n    echo \"error: ❌ Not in a git repository\"\n    exit 1\nfi\n\necho \"✅ All environment checks passed!\"\n";
 		};
 		864FE87F2E97AD56004BFC07 /* Download and Copy ripgrep Binary */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -354,8 +353,6 @@
 /* Begin XCBuildConfiguration section */
 		2883E4C02CA5ECBC00F79A48 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 2883E4B52CA5ECBB00F79A48 /* Onit */;
-			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -421,8 +418,6 @@
 		};
 		2883E4C12CA5ECBC00F79A48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 2883E4B52CA5ECBB00F79A48 /* Onit */;
-			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -481,8 +476,6 @@
 		};
 		2883E4C32CA5ECBC00F79A48 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 2883E4B52CA5ECBB00F79A48 /* Onit */;
-			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -535,8 +528,6 @@
 		};
 		2883E4C42CA5ECBC00F79A48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 2883E4B52CA5ECBB00F79A48 /* Onit */;
-			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

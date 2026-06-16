@@ -250,9 +250,6 @@ dist
 __pycache__/
 .venv/
 
-# Secrets and sensitive configuration
-macos/OnitQuickEdit/Secrets.xcconfig
-macos/OnitQuickEdit/Secrets.xcconfig.backup
 .gstack/
 
 # Former submodules / private tooling kept on disk only (quickedit-only)

@@ -30,7 +30,6 @@ struct SettingsQuickEditDev: View {
 
         #if DEBUG || ONIT_BETA
         experimentalTriggersSection
-        demoModeSection
         trainingDataSection
         #endif
     }
@@ -114,8 +113,6 @@ struct SettingsQuickEditDev: View {
     // MARK: - Child Components: Experimental Triggers Section
 
     #if DEBUG || ONIT_BETA
-    @Default(.hideBugReportEmoji) private var hideBugReportEmoji
-
     private var experimentalTriggersSection: some View {
         SettingsPageSection(title: .init(text: String.localized("Experimental Triggers", table: "QuickEdit"))) {
             SettingsPageSubsection(
@@ -124,20 +121,6 @@ struct SettingsQuickEditDev: View {
                     subtitle: String.localized("Detect text selection using image diff instead of accessibility APIs. When enabled, replaces the standard trigger service.", table: "QuickEdit")
                 ),
                 isOn: self.$config.enableNonAccessibilityTrigger
-            )
-        }
-    }
-    
-    // MARK: - Child Components: Demo Mode Section
-
-    private var demoModeSection: some View {
-        SettingsPageSection(title: .init(text: String.localized("Demo Mode", table: "QuickEdit"))) {
-            SettingsPageSubsection(
-                header: .init(
-                    title: String.localized("Hide bug report emoji", table: "QuickEdit"),
-                    subtitle: String.localized("Hides the 😱 emoji button used for reporting errors. Useful for recording demo videos.", table: "QuickEdit")
-                ),
-                isOn: self.$hideBugReportEmoji
             )
         }
     }

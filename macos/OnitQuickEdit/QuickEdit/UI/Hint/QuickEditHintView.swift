@@ -182,12 +182,6 @@ struct QuickEditHintView: View {
                     ActionButton(action: action)
                 }
             }
-
-            #if DEBUG || ONIT_BETA
-            if !Defaults[.hideBugReportEmoji] {
-                debugLabelingButton
-            }
-            #endif
         }
         .padding(.leading, 5)
         .padding([.vertical, .trailing], 3)
@@ -312,21 +306,4 @@ struct QuickEditHintView: View {
             }
         }
     }
-
-    #if DEBUG || ONIT_BETA
-    private var debugLabelingButton: some View {
-        Button {
-            if let capture = QuickEditNonAccessibilityTriggerService.latestDebugCapture {
-                NonAXTriggerLabelingWindowController.shared.show(capture: capture)
-            }
-        } label: {
-            Text("😱")
-                .font(.system(size: 14))
-        }
-        .buttonStyle(.plain)
-        .padding(.horizontal, 4)
-        .opacity(QuickEditNonAccessibilityTriggerService.latestDebugCapture != nil ? 1 : 0.3)
-        .disabled(QuickEditNonAccessibilityTriggerService.latestDebugCapture == nil)
-    }
-    #endif
 }

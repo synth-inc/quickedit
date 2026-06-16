@@ -117,9 +117,6 @@ extension Defaults.Keys {
     static let stopModeUserConfigured = Key<Bool>("stopModeUserConfigured", default: false)
     
     // QuickEdit
-    #if DEBUG || ONIT_BETA
-    static let hideBugReportEmoji = Key<Bool>("hideBugReportEmoji", default: false)
-    #endif
     static let quickEditConfig = Key<QuickEditConfig>("quickEditConfig", default: .default)
     static let quickEditMode = Key<InferenceMode>("quickEditMode", default: .remote)
     static let quickEditRemoteModel = Key<AIModel?>("quickEditRemoteModel", default: nil)

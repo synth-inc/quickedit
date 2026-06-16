@@ -13,18 +13,6 @@ import Defaults
 import Foundation
 import UniformTypeIdentifiers
 
-// MARK: - Debug Capture (DEBUG only)
-
-#if DEBUG || ONIT_BETA
-struct NonAXTriggerDebugCapture {
-    let beforeImage: CGImage
-    let afterImage: CGImage
-    let changedRegions: [CGRect]
-    let mouseLocation: CGPoint
-    let timestamp: Date
-}
-#endif
-
 // MARK: - Configuration
 
 struct NonAccessibilityTriggerConfig {
@@ -84,10 +72,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
 
     static let shared = QuickEditNonAccessibilityTriggerService()
 
-    #if DEBUG || ONIT_BETA
-    static var latestDebugCapture: NonAXTriggerDebugCapture?
-    #endif
-
     // MARK: - Properties
 
     weak var delegate: QuickEditTriggerServiceDelegate?
@@ -107,7 +91,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
     private var beforeScreenshotWindowTitle: String?
     private var beforeScreenshotWindowFrame: CGRect?
     private var captureTask: Task<Void, Never>?
-
 
     // Cleanup task for screenshots that aren't used (e.g., simple click with no follow-up action)
     private var screenshotCleanupTask: Task<Void, Never>?
@@ -458,13 +441,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
         }
 
         guard let validRegions = analysis.validRegions else {
-            #if DEBUG || ONIT_BETA
-            showFalseNegativeReportButton(
-                beforeImage: beforeImage,
-                afterImage: afterImage,
-                groupedRegions: analysis.groupedRegions
-            )
-            #endif
             return
         }
 
@@ -475,17 +451,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
 
         let aspectRatio = selectedRegion.width / selectedRegion.height
         print("[NonAccessibilityTrigger] Selected region: \(Int(selectedRegion.width))x\(Int(selectedRegion.height)) | aspect: \(String(format: "%.2f", aspectRatio)) (closest to mouse at \(mouseLocation))")
-
-        // Store debug capture for labeling UI (DEBUG only)
-        #if DEBUG || ONIT_BETA
-        QuickEditNonAccessibilityTriggerService.latestDebugCapture = NonAXTriggerDebugCapture(
-            beforeImage: beforeImage,
-            afterImage: afterImage,
-            changedRegions: analysis.groupedRegions,
-            mouseLocation: mouseLocation,
-            timestamp: Date()
-        )
-        #endif
 
         // Step 5: Convert to screen coordinates and trigger QuickEdit
         await triggerQuickEdit(with: selectedRegion, appName: appName, reason: reason, checkpoint: checkpoint)
@@ -567,28 +532,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
             return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
         }
     }
-
-    // MARK: - Debug False Negative Reporting
-
-    #if DEBUG || ONIT_BETA
-    /// Shows the scream emoji button near mouse when detection rejects regions.
-    /// User can click it to save a false negative test case.
-    private func showFalseNegativeReportButton(
-        beforeImage: CGImage,
-        afterImage: CGImage,
-        groupedRegions: [CGRect]
-    ) {
-        let mouseLocation = NSEvent.mouseLocation
-        let capture = NonAXTriggerDebugCapture(
-            beforeImage: beforeImage,
-            afterImage: afterImage,
-            changedRegions: groupedRegions,
-            mouseLocation: mouseLocation,
-            timestamp: Date()
-        )
-        FalseNegativeReportButtonPresenter.shared.show(near: mouseLocation, capture: capture)
-    }
-    #endif
 
     // MARK: - Debug Screenshot Saving
 
@@ -880,9 +823,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
             // Track shift key state
             if modifiers.shift && !isShiftDown {
                 isShiftDown = true
-                #if DEBUG || ONIT_BETA
-                FalseNegativeReportButtonPresenter.shared.dismiss()
-                #endif
                 captureBeforeScreenshotIfNeeded(reason: "Shift down")
             } else if !modifiers.shift && isShiftDown {
                 isShiftDown = false
@@ -891,9 +831,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
             // Track command key state
             if modifiers.command && !isCommandDown {
                 isCommandDown = true
-                #if DEBUG || ONIT_BETA
-                FalseNegativeReportButtonPresenter.shared.dismiss()
-                #endif
                 captureBeforeScreenshotIfNeeded(reason: "Cmd down")
             } else if !modifiers.command && isCommandDown {
                 isCommandDown = false
@@ -905,10 +842,6 @@ final class QuickEditNonAccessibilityTriggerService: NSObject {
         if modifiers.command && !modifiers.shift && !modifiers.control && !modifiers.option {
             let character = event.event.charactersIgnoringModifiers?.lowercased()
             if character == "a" && isKeyDown {
-                // Dismiss the false negative report button on new selection
-                #if DEBUG || ONIT_BETA
-                FalseNegativeReportButtonPresenter.shared.dismiss()
-                #endif
                 // Before screenshot already captured on Cmd down
                 // Use 300ms additional delay for instant selection to render
                 scheduleTrigger(reason: "Cmd+A (Select All)", afterDelay: 300)
@@ -1005,10 +938,6 @@ extension QuickEditNonAccessibilityTriggerService: MouseNotificationDelegate {
     }
 
     func mouseNotificationManager(_ manager: MouseNotificationManager, didReceiveSingleClick event: NSEvent) {
-        // Dismiss the false negative report button if click is outside it
-        #if DEBUG || ONIT_BETA
-        FalseNegativeReportButtonPresenter.shared.dismissIfClickOutside(at: NSEvent.mouseLocation)
-        #endif
 
         let isShiftClick = event.modifierFlags.contains(.shift)
 
