@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "magic-edit, magic-writing.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
