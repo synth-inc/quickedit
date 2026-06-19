@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>inc.synth.Onit</string>
+	<string>inc.synth.onit.quickedit</string>
 	<key>PROJECT_ID</key>
 	<string>onit-3b9d6</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:616960656741:ios:4ab96e8f66c90bb5ea4d8c</string>
+	<string>1:616960656741:ios:29d7ffa90bf219e2ea4d8c</string>
 </dict>
 </plist>
