@@ -35,14 +35,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.616960656741-mrmjdqm4dc7f1shifo91ic5palbr8pul</string>
+				<string>com.googleusercontent.apps.616960656741-kv5pmnof32uc47omk64jk6evm34midrl</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GIDClientID</key>
-	<string>616960656741-mrmjdqm4dc7f1shifo91ic5palbr8pul.apps.googleusercontent.com</string>
+	<string>616960656741-kv5pmnof32uc47omk64jk6evm34midrl.apps.googleusercontent.com</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>NSAppTransportSecurity</key>
