@@ -28,8 +28,8 @@ fi
 ########################################
 # 🔧 Configuration
 ########################################
-APP_NAME="Onit QuickEdit"
-SCHEME="OnitQuickEdit"
+APP_NAME="${APP_NAME:-Onit QuickEdit}"
+SCHEME="${SCHEME:-OnitQuickEdit}"
 BUILD_DIR="build"
 ARCHIVE_PATH="$BUILD_DIR/$APP_NAME.xcarchive"
 APP_PATH="$BUILD_DIR/$APP_NAME.app"
@@ -37,7 +37,8 @@ DMG_PATH="$BUILD_DIR/$APP_NAME.dmg"
 DMG_RW_PATH="$BUILD_DIR/$APP_NAME-temp.dmg"
 DMG_LAYOUT_DIR="$BUILD_DIR/dmg_layout"
 
-SIGN_ID="Developer ID Application: Synthetic Exploration, Inc (TYC9PKBMB6)"
+# Code signing identity — override via env for a different Apple team / open-source builds.
+SIGN_ID="${SIGN_ID:-Developer ID Application: Synthetic Exploration, Inc (TYC9PKBMB6)}"
 
 # Notarization credentials (App Store Connect API key)
 NOTARY_KEY_PATH="${NOTARY_KEY_PATH:-}"
@@ -91,13 +92,16 @@ if [ "$DMG_ONLY" = false ]; then
   cp -R "$ARCHIVE_PATH/Products/Applications/$APP_NAME.app" "$BUILD_DIR/"
 
   ########################################
-  # 🔧 Replace provisioning profile with Developer ID profile
+  # 🔧 Strip embedded provisioning profile (not needed for Developer ID)
   ########################################
-  echo "🔧 Installing Developer ID provisioning profile..."
+  # Developer ID distribution (outside the App Store) does not use a provisioning
+  # profile, and none of this app's entitlements (team-prefixed keychain-access-groups,
+  # network, apple-events) require one. The archive is built with automatic
+  # "Apple Development" signing which embeds a dev profile, so just remove it before
+  # re-signing with Developer ID.
+  echo "🔧 Removing embedded provisioning profile (not needed for Developer ID)..."
   find "$APP_PATH" -name "embedded.provisionprofile" -delete
   find "$APP_PATH" -name "*.provisionprofile" -delete
-  cp "Onit_Developer_ID.provisionprofile" "$APP_PATH/Contents/embedded.provisionprofile"
-  echo "✅ Developer ID profile installed"
 
   # Use entitlements file directly (no transformation needed)
   DIST_ENTITLEMENTS="OnitQuickEdit/OnitQuickEdit.entitlements"
