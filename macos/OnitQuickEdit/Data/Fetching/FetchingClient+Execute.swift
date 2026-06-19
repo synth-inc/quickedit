@@ -30,10 +30,11 @@ extension FetchingClient {
         }
 
         // Helpful debugging method- put in the endpoint name and you can see the full request
+        #if DEBUG
         if endpoint.baseURL.absoluteString.contains("api.perplexity.ai") {
             FetchingClient.printCurlRequest(endpoint: endpoint, url: url)
-            print("here")
         }
+        #endif
 
         do {
             let data = try await self.data(

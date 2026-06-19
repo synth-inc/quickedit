@@ -254,6 +254,10 @@ __pycache__/
 macos/OnitQuickEdit/Secrets.xcconfig
 macos/OnitQuickEdit/Secrets.xcconfig.backup
 
+# Code signing — provisioning profiles must never be committed to a public repo
+macos/*.provisionprofile
+macos/*.mobileprovision
+
 .gstack/
 
 # Former submodules / private tooling kept on disk only (quickedit-only)

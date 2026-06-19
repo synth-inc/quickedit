@@ -9,7 +9,9 @@ import Foundation
 
 extension FetchingClient {
     public static func printCurlRequest<E: Endpoint>(endpoint: E, url: URL) {
-        // Helpful debugging method
+        // Helpful debugging method. Prints the Authorization Bearer token, so it must never
+        // run in Release builds — gated behind DEBUG as defense in depth for any caller.
+        #if DEBUG
         let encoder = JSONEncoder()
         print("CURL Request:")
         print("curl -X \(endpoint.method.rawValue) \(url.absoluteString) \\")
@@ -29,5 +31,6 @@ extension FetchingClient {
                 print("  -d '\(jsonString)'")
             }
         }
+        #endif
     }
 }

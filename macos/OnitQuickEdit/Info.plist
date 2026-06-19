@@ -50,6 +50,8 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Onit QuickEdit uses automation (Apple Events) to read and rewrite the text you select in other apps.</string>
 	<key>NSApplicationCrashOnExceptions</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
