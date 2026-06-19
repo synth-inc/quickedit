@@ -8,7 +8,7 @@
 import AppKit
 import Combine
 
-/// Service that detects if a dev build (inc.synth.OnitQuickEdit.dev) is running.
+/// Service that detects if a dev build (inc.synth.onit.quickedit.dev) is running.
 /// Used by production builds to defer to the dev build when both are running.
 /// This service only activates in Release builds.
 @MainActor
@@ -20,7 +20,7 @@ final class DevBuildDetectionService: ObservableObject {
 
     // MARK: - Constants
 
-    private let devBundleId = "inc.synth.OnitQuickEdit.dev"
+    private let devBundleId = "inc.synth.onit.quickedit.dev"
 
     // MARK: - Published Properties
 

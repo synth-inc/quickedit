@@ -212,23 +212,23 @@ x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture
 
 ```bash
 # Reset all permissions for dev build
-tccutil reset All inc.synth.Onit.dev
+tccutil reset All inc.synth.onit.quickedit.dev
 
 # Reset specific permission
-tccutil reset ScreenCapture inc.synth.Onit.dev
-tccutil reset Accessibility inc.synth.Onit.dev
+tccutil reset ScreenCapture inc.synth.onit.quickedit.dev
+tccutil reset Accessibility inc.synth.onit.quickedit.dev
 
 # Reset for production build
-tccutil reset All inc.synth.Onit
+tccutil reset All inc.synth.onit.quickedit
 
 # Reset for beta build
-tccutil reset All inc.synth.Onit.beta
+tccutil reset All inc.synth.onit.quickedit.beta
 ```
 
 ### Reset UserDefaults
 
 ```bash
-defaults delete inc.synth.Onit.dev
+defaults delete inc.synth.onit.quickedit.dev
 ```
 
 ---

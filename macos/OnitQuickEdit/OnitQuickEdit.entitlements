@@ -12,8 +12,8 @@
 	<true/>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>TYC9PKBMB6.inc.synth.OnitQuickEdit.dev</string>
-		<string>TYC9PKBMB6.inc.synth.OnitQuickEdit</string>
+		<string>TYC9PKBMB6.inc.synth.onit.quickedit.dev</string>
+		<string>TYC9PKBMB6.inc.synth.onit.quickedit</string>
 	</array>
 </dict>
 </plist>

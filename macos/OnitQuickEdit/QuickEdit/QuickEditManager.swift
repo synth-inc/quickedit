@@ -560,7 +560,7 @@ class QuickEditManager: ObservableObject {
         state.isDisplayedBelowHighlightedText = true
         state.cursorTextFrame = selectionBounds
         state.currentAppName = "Onit Demo"
-        state.currentAppBundleId = "com.synth.onit" // Demo mode uses Onit bundle ID
+        state.currentAppBundleId = Bundle.main.bundleIdentifier ?? "inc.synth.onit.quickedit" // Demo mode uses Onit's own bundle ID
         state.isEditableElement = true
         state.demoActionCallback = onAction
         state.demoInsertCallback = onInsert
