@@ -17,7 +17,7 @@ struct QuickEditConfig: Codable, Defaults.Serializable {
     var enableNonAccessibilityTrigger: Bool
 
     static let `default` = QuickEditConfig(
-        isEnabled: false,
+        isEnabled: true,
         showHint: true,
         showCustomPrompts: true,
         shouldCaptureTrainingData: false,
