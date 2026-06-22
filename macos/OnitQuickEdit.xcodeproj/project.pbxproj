@@ -47,7 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2883E4B32CA5ECBB00F79A48 /* Onit QuickEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Onit QuickEdit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2883E4B32CA5ECBB00F79A48 /* QuickEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QuickEdit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CD61472E8DA4C800EE15A5 /* OnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,7 +121,7 @@
 		2883E4B42CA5ECBB00F79A48 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2883E4B32CA5ECBB00F79A48 /* Onit QuickEdit.app */,
+				2883E4B32CA5ECBB00F79A48 /* QuickEdit.app */,
 				A7CD61472E8DA4C800EE15A5 /* OnitTests.xctest */,
 			);
 			name = Products;
@@ -165,8 +165,8 @@
 				96E6E90D2DB81CB200BADA63 /* GoogleSignInSwift */,
 				868C078E2E0ED4C7007C86EF /* GRDB */,
 			);
-			productName = "Onit QuickEdit";
-			productReference = 2883E4B32CA5ECBB00F79A48 /* Onit QuickEdit.app */;
+			productName = "QuickEdit";
+			productReference = 2883E4B32CA5ECBB00F79A48 /* QuickEdit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A7CD61462E8DA4C800EE15A5 /* OnitTests */ = {
@@ -500,7 +500,7 @@
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ./OnitQuickEdit/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Onit QuickEdit";
+				INFOPLIST_KEY_CFBundleDisplayName = "QuickEdit";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -512,7 +512,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = inc.synth.onit.quickedit.dev;
 				PRODUCT_MODULE_NAME = OnitQuickEdit;
-				PRODUCT_NAME = "Onit QuickEdit";
+				PRODUCT_NAME = "QuickEdit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
 				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
@@ -544,7 +544,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ./OnitQuickEdit/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Onit QuickEdit";
+				INFOPLIST_KEY_CFBundleDisplayName = "QuickEdit";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -556,7 +556,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = inc.synth.onit.quickedit;
 				PRODUCT_MODULE_NAME = OnitQuickEdit;
-				PRODUCT_NAME = "Onit QuickEdit";
+				PRODUCT_NAME = "QuickEdit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -578,7 +578,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Onit QuickEdit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Onit QuickEdit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickEdit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickEdit";
 			};
 			name = Debug;
 		};
@@ -596,7 +596,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Onit QuickEdit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Onit QuickEdit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickEdit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickEdit";
 			};
 			name = Release;
 		};

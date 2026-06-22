@@ -28,7 +28,7 @@ fi
 ########################################
 # 🔧 Configuration
 ########################################
-APP_NAME="${APP_NAME:-Onit QuickEdit}"
+APP_NAME="${APP_NAME:-QuickEdit}"
 SCHEME="${SCHEME:-OnitQuickEdit}"
 BUILD_DIR="build"
 ARCHIVE_PATH="$BUILD_DIR/$APP_NAME.xcarchive"
