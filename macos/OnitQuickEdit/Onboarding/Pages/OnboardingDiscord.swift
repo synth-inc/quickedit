@@ -36,7 +36,7 @@ struct OnboardingDiscord: View {
                         .padding(.top, 18)
                         .padding(.bottom, 6)
 
-                    Text("Onit")
+                    Text("QuickEdit")
                         .styleText(
                             size: 28,
                             weight: .bold

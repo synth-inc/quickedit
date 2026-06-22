@@ -103,7 +103,7 @@ struct NotificationWindowView: View {
             HStack(alignment: .center, spacing: 6) {
                 self.logo
                 
-                Text("Onit")
+                Text("QuickEdit")
                     .styleText(
                         size: 13,
                         color: Color.S_1

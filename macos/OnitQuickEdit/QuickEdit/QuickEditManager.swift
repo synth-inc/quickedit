@@ -543,7 +543,7 @@ class QuickEditManager: ObservableObject {
 
         // Create a proper QuickEditRequest for demo mode
         let demoRequest = QuickEditRequest(
-            applicationName: "Onit Demo",
+            applicationName: "QuickEdit Demo",
             textBefore: nil,
             selectedText: selectedText,
             selectedTextBounds: selectionBounds,
@@ -559,7 +559,7 @@ class QuickEditManager: ObservableObject {
         state.displayArea = displayArea
         state.isDisplayedBelowHighlightedText = true
         state.cursorTextFrame = selectionBounds
-        state.currentAppName = "Onit Demo"
+        state.currentAppName = "QuickEdit Demo"
         state.currentAppBundleId = Bundle.main.bundleIdentifier ?? "inc.synth.onit.quickedit" // Demo mode uses Onit's own bundle ID
         state.isEditableElement = true
         state.demoActionCallback = onAction
