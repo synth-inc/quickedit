@@ -327,8 +327,12 @@ if [ "$DMG_ONLY" = false ]; then
   ########################################
   # ✅ Final Verification
   ########################################
-  echo "🔐 Final Gatekeeper check..."
-  spctl --assess --type open --verbose=2 "$DMG_PATH"
+  echo "🔐 Final notarization check..."
+  # `stapler validate` above is authoritative. `spctl --assess --type open` is unreliable
+  # for DMGs on recent macOS (returns "Insufficient Context"), so run it informationally
+  # and do not fail the build on its exit code.
+  spctl --assess --type open --verbose=2 "$DMG_PATH" || \
+    echo "ℹ️  spctl --assess returned non-zero (known DMG limitation) — relying on stapler validate above."
 
   echo ""
   echo "🎉 SUCCESS! Your app is ready for distribution."
