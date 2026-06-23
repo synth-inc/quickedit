@@ -155,15 +155,15 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
         switch self {
         /// Common Steps
         case .featureSelection:
-            return String.localized("Welcome to Onit", table: "Onboarding")
+            return String.localized("Welcome to QuickEdit", table: "Onboarding")
         case .permissions:
-            return String.localized("Grant access to unlock all tools", table: "Onboarding")
+            return String.localized("Grant access to unlock QuickEdit", table: "Onboarding")
         case .discord:
             return String.localized("Join our Discord Server!", table: "Onboarding")
 
         /// Feature Step: QuickEdit
         case .quickEditIntro:
-            return String.localized("Since you're here...", table: "Onboarding")
+            return String.localized("Make every sentence shine", table: "Onboarding")
         case .quickEditDemo:
             return String.localized("Start by selecting text", table: "Onboarding")
 
@@ -180,7 +180,7 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
         switch self {
         /// Common Steps
         case .featureSelection:
-            return String.localized("Choose the features you want to enable.", table: "Onboarding")
+            return String.localized("Let's get you set up.", table: "Onboarding")
         case .permissions:
             return "Permissions are needed for QuickEdit to work."
         case .discord:
@@ -188,7 +188,7 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
 
         /// Feature Step: QuickEdit
         case .quickEditIntro:
-            return String.localized("QuickEdit is another tool that comes with Onit. Highlight any text and polish it up in a click. Dictate gets the words down, QuickEdit cleans them up.", table: "Onboarding")
+            return String.localized("Let's set you up with instant, one-click AI text improvements.", table: "Onboarding")
         case .quickEditDemo:
             return String.localized("Try it on the text below and see it go from messy to perfect!", table: "Onboarding")
 
