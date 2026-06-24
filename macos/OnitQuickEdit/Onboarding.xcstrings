@@ -356,19 +356,19 @@
         }
       }
     },
-    "Hang tight while we set up your Onit experience.": {
+    "Hang tight while we set up your QuickEdit experience.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hang tight while we set up your Onit experience."
+            "value": "Hang tight while we set up your QuickEdit experience."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Patientez pendant que nous préparons votre expérience Onit."
+            "value": "Patientez pendant que nous préparons votre expérience QuickEdit."
           }
         }
       }
@@ -533,37 +533,37 @@
         }
       }
     },
-    "Onit is up and running": {
+    "QuickEdit is up and running": {
       "comment": "Onboarding: Complete page title",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Onit is up and running"
+            "value": "QuickEdit is up and running"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Onit est opérationnel"
+            "value": "QuickEdit est opérationnel"
           }
         }
       }
     },
-    "Onit is up and running!": {
+    "QuickEdit is up and running!": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Onit is up and running!"
+            "value": "QuickEdit is up and running!"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Onit est opérationnel !"
+            "value": "QuickEdit est opérationnel !"
           }
         }
       }
@@ -654,24 +654,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "QuickEdit"
-          }
-        }
-      }
-    },
-    "QuickEdit is another tool that comes with Onit. Highlight any text and polish it up in a click. Dictate gets the words down, QuickEdit cleans them up.": {
-      "comment": "Onboarding: QuickEdit intro caption",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QuickEdit is another tool that comes with Onit. Highlight any text and polish it up in a click. Dictate gets the words down, QuickEdit cleans them up."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QuickEdit est un autre outil inclus dans Onit. Surlignez du texte et peaufinez-le en un clic. Dictation pose les mots, QuickEdit les peaufine."
           }
         }
       }
@@ -783,20 +765,20 @@
         }
       }
     },
-    "Screenshots are used to find empty screen space, keeping Onit out of the way!": {
+    "Screenshots are used to find empty screen space, keeping QuickEdit out of the way!": {
       "comment": "Onboarding: Screenshot permission example sheet title",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Screenshots are used to find empty screen space, keeping Onit out of the way!"
+            "value": "Screenshots are used to find empty screen space, keeping QuickEdit out of the way!"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les captures d'écran sont utilisées pour trouver l'espace vide à l'écran, gardant Onit hors du chemin !"
+            "value": "Les captures d'écran sont utilisées pour trouver l'espace vide à l'écran, gardant QuickEdit hors du chemin !"
           }
         }
       }
@@ -815,24 +797,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sélectionner du texte"
-          }
-        }
-      }
-    },
-    "Set Up QuickEdit": {
-      "comment": "Onboarding: QuickEdit intro button",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Set Up QuickEdit"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Configurer QuickEdit"
           }
         }
       }
@@ -873,24 +837,6 @@
         }
       }
     },
-    "Since you're here...": {
-      "comment": "Onboarding: QuickEdit intro title",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Since you're here..."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puisque vous êtes là..."
-          }
-        }
-      }
-    },
     "Skip": {
       "comment": "Onboarding: Skip button",
       "extractionState": "manual",
@@ -905,24 +851,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Passer"
-          }
-        }
-      }
-    },
-    "Skip Demo": {
-      "comment": "Onboarding: QuickEdit demo skip button",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skip Demo"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passer la démo"
           }
         }
       }
@@ -980,37 +908,20 @@
         }
       }
     },
-    "Start typing in any app, and you'll see Onit's\nsuggestions appear.": {
+    "Select text in any app, and QuickEdit will polish it in a click.": {
       "comment": "Onboarding: Complete page caption",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Start typing in any app, and you'll see Onit's\nsuggestions appear."
+            "value": "Select text in any app, and QuickEdit will polish it in a click."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Commencez à taper dans n'importe quelle application, et vous verrez\nles suggestions d'Onit apparaître."
-          }
-        }
-      }
-    },
-    "Start typing in any app, and you'll see Onit's\\nsuggestions appear.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start typing in any app, and you'll see Onit's\\nsuggestions appear."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Commencez à taper dans n'importe quelle application, et vous verrez\\nles suggestions d'Onit apparaître."
+            "value": "Sélectionnez du texte dans n'importe quelle application, et QuickEdit le peaufinera en un clic."
           }
         }
       }
@@ -1175,20 +1086,20 @@
         }
       }
     },
-    "Welcome to Onit": {
+    "Welcome to QuickEdit": {
       "comment": "Onboarding: Feature selection page title",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Welcome to Onit"
+            "value": "Welcome to QuickEdit"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bienvenue sur Onit"
+            "value": "Bienvenue sur QuickEdit"
           }
         }
       }
@@ -1229,19 +1140,19 @@
         }
       }
     },
-    "You're all set to use Onit.": {
+    "You're all set to use QuickEdit.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You're all set to use Onit."
+            "value": "You're all set to use QuickEdit."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous êtes prêt à utiliser Onit."
+            "value": "Vous êtes prêt à utiliser QuickEdit."
           }
         }
       }
@@ -1387,24 +1298,6 @@
         }
       }
     },
-    "This is what allows Onit paste your speech into any text field.": {
-      "comment": "Onboarding: Accessibility permission bullet point",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This is what allows Onit paste your speech into any text field."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "C'est ce qui permet à Onit de coller vos paroles dans n'importe quel champ de texte."
-          }
-        }
-      }
-    },
     "This is used by QuickEdit to pick up highlighted text and replace it with your edits.": {
       "comment": "Onboarding: Accessibility permission bullet point",
       "extractionState": "manual",
@@ -1423,20 +1316,20 @@
         }
       }
     },
-    "This helps Onit find empty space so it doesn't cover what you're working on.": {
+    "This helps QuickEdit find empty space so it doesn't cover what you're working on.": {
       "comment": "Onboarding: Screen recording permission bullet point",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This helps Onit find empty space so it doesn't cover what you're working on."
+            "value": "This helps QuickEdit find empty space so it doesn't cover what you're working on."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ceci aide Onit à trouver un espace libre pour ne pas masquer votre contenu."
+            "value": "Ceci aide QuickEdit à trouver un espace libre pour ne pas masquer votre contenu."
           }
         }
       }

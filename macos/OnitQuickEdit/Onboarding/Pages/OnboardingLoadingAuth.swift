@@ -17,7 +17,7 @@ struct OnboardingLoadingAuth: View {
             headerTitle: {
                 OnboardingTitleAndCaption(
                     customTitle: String.localized("Warming Up...", table: "Onboarding"),
-                    customCaption: String.localized("Hang tight while we set up your Onit experience.", table: "Onboarding")
+                    customCaption: String.localized("Hang tight while we set up your QuickEdit experience.", table: "Onboarding")
                 )
             },
             bodyContent: {

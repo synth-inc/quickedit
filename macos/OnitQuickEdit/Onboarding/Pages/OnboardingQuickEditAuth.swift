@@ -107,7 +107,7 @@ struct OnboardingQuickEditAuth: View {
 
     private var authHeaderView: some View {
         OnboardingTitleAndCaption(
-            customTitle: String.localized("Welcome to Onit", table: "Onboarding")
+            customTitle: String.localized("Welcome to QuickEdit", table: "Onboarding")
         )
     }
 

@@ -81,7 +81,7 @@ QuickEdit is this thing that like pops up when you need it while working on text
                     Button {
                         skipDemo()
                     } label: {
-                        Text(String.localized("Skip Demo", table: "Onboarding"))
+                        Text(String.localized("I'll do it later", table: "Onboarding"))
                             .font(.system(size: 13, weight: .medium))
                             .foregroundColor(Color.T_2)
                     }
@@ -109,9 +109,9 @@ QuickEdit is this thing that like pops up when you need it while working on text
     private func skipDemo() {
         AnalyticsManager.QuickEdit.onboardingDemoSkipped()
         QuickEditManager.shared.hideDemoHint()
-        if let next = currentStep?.nextStep() {
-            currentStep = next
-        }
+        /// Skip the whole QuickEdit-specific onboarding, jumping to the first
+        /// step after the `quickEditSteps` group (or `.complete` if none).
+        currentStep = OnboardingStep.firstStepAfterQuickEditSteps()
     }
 
     // MARK: - Private Functions: Demo Logic

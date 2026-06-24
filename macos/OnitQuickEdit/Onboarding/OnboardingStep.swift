@@ -18,7 +18,6 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
     case discord
 
     /// Feature Step: QuickEdit
-    case quickEditIntro
     case quickEditDemo
 
     /// Feature Step: QuickEdit Translation
@@ -35,7 +34,6 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
     ]
 
     static let quickEditSteps: [OnboardingStep] = [
-        .quickEditIntro,
         .quickEditDemo
     ]
 
@@ -94,6 +92,17 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
         guard let currentStepIndex = steps.firstIndex(of: self) else { return nil }
         let previousStepIndex = currentStepIndex - 1
         return previousStepIndex >= 0 ? steps[previousStepIndex] : nil
+    }
+
+    /// Returns the first step in the current flow that comes after the whole
+    /// `quickEditSteps` group. Used to skip the QuickEdit-specific onboarding.
+    /// Falls back to `.complete` when no step follows the group.
+    static func firstStepAfterQuickEditSteps() -> OnboardingStep {
+        let steps = Self.steps
+        if let firstStepAfterGroup = steps.first(where: { !quickEditSteps.contains($0) }) {
+            return firstStepAfterGroup
+        }
+        return .complete
     }
 
     // MARK: - Step Adjustment
@@ -155,15 +164,13 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
         switch self {
         /// Common Steps
         case .featureSelection:
-            return String.localized("Welcome to Onit", table: "Onboarding")
+            return String.localized("Welcome to QuickEdit", table: "Onboarding")
         case .permissions:
             return String.localized("Grant access to unlock all tools", table: "Onboarding")
         case .discord:
             return String.localized("Join our Discord Server!", table: "Onboarding")
 
         /// Feature Step: QuickEdit
-        case .quickEditIntro:
-            return String.localized("Since you're here...", table: "Onboarding")
         case .quickEditDemo:
             return String.localized("Start by selecting text", table: "Onboarding")
 
@@ -172,7 +179,7 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
             return String.localized("Set Up Translation", table: "Onboarding")
 
         case .complete:
-            return String.localized("Onit is up and running", table: "Onboarding")
+            return String.localized("QuickEdit is up and running", table: "Onboarding")
         }
     }
 
@@ -187,8 +194,6 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
             return String.localized("Say hello to the team and other Onit users, get updates\nand give feedback.", table: "Onboarding")
 
         /// Feature Step: QuickEdit
-        case .quickEditIntro:
-            return String.localized("QuickEdit is another tool that comes with Onit. Highlight any text and polish it up in a click. Dictate gets the words down, QuickEdit cleans them up.", table: "Onboarding")
         case .quickEditDemo:
             return String.localized("Try it on the text below and see it go from messy to perfect!", table: "Onboarding")
 
@@ -197,7 +202,7 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
             return String.localized("Choose your preferred languages for translation.", table: "Onboarding")
 
         case .complete:
-            return String.localized("Start typing in any app, and you'll see Onit's\nsuggestions appear.", table: "Onboarding")
+            return String.localized("Select text in any app, and QuickEdit will polish it in a click.", table: "Onboarding")
         }
     }
 }

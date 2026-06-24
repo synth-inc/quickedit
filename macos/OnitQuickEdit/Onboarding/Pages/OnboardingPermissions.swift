@@ -138,7 +138,6 @@ struct OnboardingPermissions: View {
             buttonText: grantedAccessibility ? String.localized("Granted", table: "Onboarding") : String.localized("Grant Access", table: "Onboarding"),
             shouldPulse: hasCheckedInitialPermissions && !grantedAccessibility
         ) {
-            bulletPointTextView(String.localized("This is what allows Onit paste your speech into any text field.", table: "Onboarding"))
             bulletPointTextView(String.localized("This is used by QuickEdit to pick up highlighted text and replace it with your edits.", table: "Onboarding"))
         } buttonAction: {
             if !grantedAccessibility {
@@ -168,7 +167,7 @@ struct OnboardingPermissions: View {
                 Button {
                     shouldShowScreenshotPermissionSheet = true
                 } label: {
-                    Text(String.localized("This helps Onit find empty space so it doesn't cover what you're working on.", table: "Onboarding"))
+                    Text(String.localized("This helps QuickEdit find empty space so it doesn't cover what you're working on.", table: "Onboarding"))
                     + Text(String.localized(" (See how)", table: "Onboarding"))
                         .underline()
                         .foregroundColor(Color.S_0)
@@ -407,7 +406,7 @@ struct OnboardingPermissions: View {
         }
         
         private var titleView: some View {
-            Text(String.localized("Screenshots are used to find empty screen space, keeping Onit out of the way!", table: "Onboarding"))
+            Text(String.localized("Screenshots are used to find empty screen space, keeping QuickEdit out of the way!", table: "Onboarding"))
                 .styleText(
                     size: 18,
                     weight: .regular,

@@ -87,8 +87,6 @@ struct OnboardingWindowView: View {
                 OnboardingDiscord()
 
             /// Feature Step: QuickEdit
-            case .quickEditIntro:
-                OnboardingQuickEditIntro()
             case .quickEditDemo:
                 OnboardingQuickEditDemo()
 
@@ -183,8 +181,8 @@ struct OnboardingWindowView: View {
     private func handleOnboardingComplete() {
         if !Defaults[.mainOnboardingCompleted] {
             NotificationWindowManager.shared.createWindow(
-                titleKey: String.localized("Onit is up and running!", table: "Onboarding"),
-                captionKey: String.localized("You're all set to use Onit.", table: "Onboarding"),
+                titleKey: String.localized("QuickEdit is up and running!", table: "Onboarding"),
+                captionKey: String.localized("You're all set to use QuickEdit.", table: "Onboarding"),
                 primaryAction: (
                     textKey: String.localized("Ok", table: "Onboarding"),
                     shouldCloseWindow: true,

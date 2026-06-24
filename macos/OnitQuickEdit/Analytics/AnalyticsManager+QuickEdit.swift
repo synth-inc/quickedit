@@ -198,16 +198,6 @@ extension AnalyticsManager {
             PostHogSDK.shared.capture("quick_edit_onboarding_auth_completed", properties: properties)
         }
 
-        /// Tracks when the QuickEdit intro onboarding step is shown
-        static func onboardingIntroShown() {
-            AnalyticsManager.sendCommonEvent(event: "quick_edit_onboarding_intro_shown")
-        }
-
-        /// Tracks when the user skips the QuickEdit intro page during onboarding
-        static func onboardingIntroSkipped() {
-            AnalyticsManager.sendCommonEvent(event: "quick_edit_onboarding_intro_skipped")
-        }
-
         /// Tracks when the QuickEdit demo onboarding step is shown
         static func onboardingDemoShown() {
             AnalyticsManager.sendCommonEvent(event: "quick_edit_onboarding_demo_shown")
