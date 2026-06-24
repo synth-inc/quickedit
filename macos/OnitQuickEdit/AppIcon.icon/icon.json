@@ -1,0 +1,30 @@
+{
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "Q.png",
+          "name" : "Q",
+          "position" : { "scale" : 1, "translation-in-points" : [ 0, 0 ] }
+        }
+      ],
+      "shadow" : { "kind" : "neutral", "opacity" : 0.5 },
+      "translucency" : { "enabled" : true, "value" : 0.5 }
+    },
+    {
+      "layers" : [
+        {
+          "glass" : false,
+          "hidden" : false,
+          "image-name" : "background.png",
+          "name" : "background",
+          "position" : { "scale" : 1, "translation-in-points" : [ 0, 0 ] }
+        }
+      ],
+      "name" : "Background"
+    }
+  ],
+  "supported-platforms" : { "circles" : [ "watchOS" ], "squares" : "shared" }
+}
