@@ -47,25 +47,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2883E4B32CA5ECBB00F79A48 /* QuickEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QuickEdit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2883E4B32CA5ECBB00F79A48 /* QuickEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CD61472E8DA4C800EE15A5 /* OnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		28F57E1D2CAC7913006AAA8C /* Exceptions for "Onit" folder in "Onit" target */ = {
+		28F57E1D2CAC7913006AAA8C /* Exceptions for "OnitQuickEdit" folder in "OnitQuickEdit" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 2883E4B22CA5ECBB00F79A48 /* Onit */;
+			target = 2883E4B22CA5ECBB00F79A48 /* OnitQuickEdit */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2883E4B52CA5ECBB00F79A48 /* Onit */ = {
+		2883E4B52CA5ECBB00F79A48 /* OnitQuickEdit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				28F57E1D2CAC7913006AAA8C /* Exceptions for "Onit" folder in "Onit" target */,
+				28F57E1D2CAC7913006AAA8C /* Exceptions for "OnitQuickEdit" folder in "OnitQuickEdit" target */,
 			);
 			path = OnitQuickEdit;
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 		2883E4AA2CA5ECBB00F79A48 = {
 			isa = PBXGroup;
 			children = (
-				2883E4B52CA5ECBB00F79A48 /* Onit */,
+				2883E4B52CA5ECBB00F79A48 /* OnitQuickEdit */,
 				A7CD61482E8DA4C800EE15A5 /* OnitTests */,
 				2883E4B42CA5ECBB00F79A48 /* Products */,
 			);
@@ -130,7 +130,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2883E4B22CA5ECBB00F79A48 /* Onit */ = {
+		2883E4B22CA5ECBB00F79A48 /* OnitQuickEdit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2883E4C22CA5ECBC00F79A48 /* Build configuration list for PBXNativeTarget "OnitQuickEdit" */;
 			buildPhases = (
@@ -147,7 +147,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				2883E4B52CA5ECBB00F79A48 /* Onit */,
+				2883E4B52CA5ECBB00F79A48 /* OnitQuickEdit */,
 			);
 			name = OnitQuickEdit;
 			packageProductDependencies = (
@@ -165,7 +165,7 @@
 				96E6E90D2DB81CB200BADA63 /* GoogleSignInSwift */,
 				868C078E2E0ED4C7007C86EF /* GRDB */,
 			);
-			productName = "QuickEdit";
+			productName = QuickEdit;
 			productReference = 2883E4B32CA5ECBB00F79A48 /* QuickEdit.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -211,7 +211,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2883E4AE2CA5ECBB00F79A48 /* Build configuration list for PBXProject "Onit" */;
+			buildConfigurationList = 2883E4AE2CA5ECBB00F79A48 /* Build configuration list for PBXProject "OnitQuickEdit" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -237,7 +237,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2883E4B22CA5ECBB00F79A48 /* Onit */,
+				2883E4B22CA5ECBB00F79A48 /* OnitQuickEdit */,
 				A7CD61462E8DA4C800EE15A5 /* OnitTests */,
 			);
 		};
@@ -345,7 +345,7 @@
 /* Begin PBXTargetDependency section */
 		A7CD614C2E8DA4C800EE15A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2883E4B22CA5ECBB00F79A48 /* Onit */;
+			target = 2883E4B22CA5ECBB00F79A48 /* OnitQuickEdit */;
 			targetProxy = A7CD614B2E8DA4C800EE15A5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -500,7 +500,7 @@
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ./OnitQuickEdit/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "QuickEdit";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickEdit;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -508,11 +508,11 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/libs";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = inc.synth.onit.quickedit.dev;
 				PRODUCT_MODULE_NAME = OnitQuickEdit;
-				PRODUCT_NAME = "QuickEdit";
+				PRODUCT_NAME = QuickEdit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
 				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
@@ -544,7 +544,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ./OnitQuickEdit/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "QuickEdit";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickEdit;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -552,11 +552,11 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/libs";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = inc.synth.onit.quickedit;
 				PRODUCT_MODULE_NAME = OnitQuickEdit;
-				PRODUCT_NAME = "QuickEdit";
+				PRODUCT_NAME = QuickEdit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -603,7 +603,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2883E4AE2CA5ECBB00F79A48 /* Build configuration list for PBXProject "Onit" */ = {
+		2883E4AE2CA5ECBB00F79A48 /* Build configuration list for PBXProject "OnitQuickEdit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2883E4C02CA5ECBC00F79A48 /* Debug */,

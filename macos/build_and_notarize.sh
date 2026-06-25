@@ -92,16 +92,17 @@ if [ "$DMG_ONLY" = false ]; then
   cp -R "$ARCHIVE_PATH/Products/Applications/$APP_NAME.app" "$BUILD_DIR/"
 
   ########################################
-  # 🔧 Strip embedded provisioning profile (not needed for Developer ID)
+  # 🔧 Replace embedded provisioning profile with the Developer ID profile
   ########################################
-  # Developer ID distribution (outside the App Store) does not use a provisioning
-  # profile, and none of this app's entitlements (team-prefixed keychain-access-groups,
-  # network, apple-events) require one. The archive is built with automatic
-  # "Apple Development" signing which embeds a dev profile, so just remove it before
-  # re-signing with Developer ID.
-  echo "🔧 Removing embedded provisioning profile (not needed for Developer ID)..."
+  # This app's entitlements (keychain-access-groups, accessibility, apple-events)
+  # MUST be authorized by an embedded provisioning profile, or AMFI kills the app
+  # on launch (SIGKILL / "Launchd job spawn failed", error 163) even though it is
+  # notarized and Gatekeeper-accepted. The archive ships with an automatic
+  # "Apple Development" profile; swap it for the Developer ID profile before signing.
+  echo "🔧 Installing Developer ID provisioning profile..."
   find "$APP_PATH" -name "embedded.provisionprofile" -delete
   find "$APP_PATH" -name "*.provisionprofile" -delete
+  cp "Onit_Developer_ID.provisionprofile" "$APP_PATH/Contents/embedded.provisionprofile"
 
   # Use entitlements file directly (no transformation needed)
   DIST_ENTITLEMENTS="OnitQuickEdit/OnitQuickEdit.entitlements"

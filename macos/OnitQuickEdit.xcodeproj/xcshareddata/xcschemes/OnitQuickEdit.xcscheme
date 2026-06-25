@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2883E4B22CA5ECBB00F79A48"
-               BuildableName = "Onit QuickEdit.app"
+               BuildableName = "QuickEdit.app"
                BlueprintName = "OnitQuickEdit"
                ReferencedContainer = "container:OnitQuickEdit.xcodeproj">
             </BuildableReference>
@@ -60,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2883E4B22CA5ECBB00F79A48"
-            BuildableName = "Onit QuickEdit.app"
+            BuildableName = "QuickEdit.app"
             BlueprintName = "OnitQuickEdit"
             ReferencedContainer = "container:OnitQuickEdit.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2883E4B22CA5ECBB00F79A48"
-            BuildableName = "Onit QuickEdit.app"
+            BuildableName = "QuickEdit.app"
             BlueprintName = "OnitQuickEdit"
             ReferencedContainer = "container:OnitQuickEdit.xcodeproj">
          </BuildableReference>
