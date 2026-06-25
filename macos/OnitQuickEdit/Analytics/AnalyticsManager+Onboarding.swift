@@ -20,20 +20,5 @@ extension AnalyticsManager {
 
             PostHogSDK.shared.capture("onboarding_dismissed", properties: properties)
         }
-
-        /// Tracks when the Discord step is shown
-        static func discordShown() {
-            AnalyticsManager.sendCommonEvent(event: "onboarding_discord_shown")
-        }
-
-        /// Tracks when user accepts the Discord invite
-        static func discordAccepted() {
-            AnalyticsManager.sendCommonEvent(event: "onboarding_discord_accepted")
-        }
-
-        /// Tracks when user skips the Discord step
-        static func discordSkipped() {
-            AnalyticsManager.sendCommonEvent(event: "onboarding_discord_skipped")
-        }
     }
 }

@@ -73,7 +73,9 @@ struct OnboardingWindowView: View {
     @ViewBuilder
     private var windowPage: some View {
         if authManager.isRestoringSession {
-            OnboardingLoadingAuth()
+            // Blank during session restore (brief) — no loading page, and avoids
+            // flashing the auth page before the restored session resolves.
+            EmptyView()
         } else if !authManager.userLoggedIn && (!onboardingAuthSkipped || windowManager.authOnly) {
             OnboardingQuickEditAuth()
         } else if let currentStep = self.currentStep {
@@ -83,8 +85,6 @@ struct OnboardingWindowView: View {
                 OnboardingFeatureSelection()
             case .permissions:
                 OnboardingPermissions()
-            case .discord:
-                OnboardingDiscord()
 
             /// Feature Step: QuickEdit
             case .quickEditIntro:

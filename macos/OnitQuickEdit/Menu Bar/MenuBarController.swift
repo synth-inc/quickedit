@@ -273,9 +273,9 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     }
     
     func updateStatusDot() {
-        self.ensureStatusDotExists()
-        self.statusDot?.fillColor = self.determineStatusDotColor().cgColor
-        self.drawStatusDot()
+        /// Status dot disabled for now. Remove any existing dot and skip drawing.
+        self.statusDot?.removeFromSuperlayer()
+        self.statusDot = nil
     }
     
     // MARK: - Private Functions: Window Delegate
@@ -305,7 +305,8 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         if  let button = self.menuBarOnit.button,
             let icon = NSImage(named: iconName)?.copy() as? NSImage
         {
-            let iconWithStatusDotCrop = self.cropIconForStatusDot(icon: icon, cropSize: 10)
+            /// Status dot disabled for now: pass cropSize 0 so no notch is cut.
+            let iconWithStatusDotCrop = self.cropIconForStatusDot(icon: icon, cropSize: 0)
             button.image = iconWithStatusDotCrop
             button.font = NSFont.systemFont(ofSize: 11, weight: .semibold)
             button.wantsLayer = true
@@ -392,11 +393,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
 
         self.showOrHideCheckForPermissionsItem()
         self.addMenuDivider()
-        
-        let discordItem = MenuBarDiscord()
-        self.addMenuItem(discordItem)
-        discordItem.runPostInitilizationSetup()
-        
+
         let checkForUpdatesItem = MenuBarCheckForUpdates()
         self.addMenuItem(checkForUpdatesItem)
         checkForUpdatesItem.runPostInitilizationSetup()
