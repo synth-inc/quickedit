@@ -78,7 +78,7 @@ struct SettingsGeneral: View {
             SettingsPageSubsection(
                 header: .init(
                     title: String.localized("Launch automatically at login", table: "Settings"),
-                    subtitle: String.localized("Open Onit automatically when you log into your computer.", table: "Settings"),
+                    subtitle: String.localized("Open QuickEdit automatically when you log into your computer.", table: "Settings"),
                 ),
                 isOn: $isLaunchAtStartupEnabled
             )

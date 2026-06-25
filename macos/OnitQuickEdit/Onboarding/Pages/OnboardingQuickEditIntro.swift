@@ -9,23 +9,13 @@ import Defaults
 import SwiftUI
 
 struct OnboardingQuickEditIntro: View {
-    // MARK: - Defaults
-
-    @Default(.currentOnboardingStep) var currentStep
-    @Default(.quickEditConfig) var quickEditConfig
-
-    // MARK: - States
-
-    @State private var isHoveredSkipButton: Bool = false
-    @State private var isPressedSkipButton: Bool = false
-
     // MARK: - Body
 
     var body: some View {
         OnboardingPage(
             bodyConfig: .init(removeContentSpacer: true),
             footerConfig: .init(
-                nextButtonText: String.localized("Set Up QuickEdit", table: "Onboarding"),
+                nextButtonText: String.localized("Next", table: "Onboarding"),
                 nextButtonRightIconName: "arrow.right"
             ),
             headerContent: {
@@ -42,8 +32,8 @@ struct OnboardingQuickEditIntro: View {
                 .padding(.bottom, 27)
             },
             footerContent: {
+                /// Pushes the "Next" button to the trailing edge of the footer.
                 Spacer()
-                skipButton
             }
         )
         .onAppear {
@@ -52,7 +42,7 @@ struct OnboardingQuickEditIntro: View {
     }
 
     // MARK: - Child Components
-    
+
     private var demoVideo: some View {
         VideoPlayerView(
             videoAssetName: "onboarding-quickedit-demo"
@@ -62,21 +52,6 @@ struct OnboardingQuickEditIntro: View {
             cornerRadius: 18,
             stroke: Color.S_0.opacity(0.24)
         )
-        
-    }
 
-    private var skipButton: some View {
-        Button {
-            AnalyticsManager.QuickEdit.onboardingIntroSkipped()
-            currentStep = .permissions
-        } label: {
-            Text(String.localized("I'll do it later", table: "Onboarding"))
-                .styleText(
-                    fontFamily: .inter,
-                    weight: .regular
-                )
-        }
-        .buttonStyle(PlainButtonStyle())
-        .padding(.trailing, 26)
     }
 }

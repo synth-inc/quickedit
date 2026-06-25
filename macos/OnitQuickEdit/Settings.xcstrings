@@ -563,6 +563,23 @@
         }
       }
     },
+    "Back": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retour"
+          }
+        }
+      }
+    },
     "But \"%@\" is valid!": {
       "extractionState": "manual",
       "localizations": {
@@ -683,19 +700,19 @@
         }
       }
     },
-    "Complete the setup list to ensure Onit works seamlessly.": {
+    "Complete the setup list to ensure QuickEdit works seamlessly.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Complete the setup list to ensure Onit works seamlessly."
+            "value": "Complete the setup list to ensure QuickEdit works seamlessly."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Complétez la liste de configuration pour garantir le bon fonctionnement d'Onit."
+            "value": "Complétez la liste de configuration pour garantir le bon fonctionnement d'QuickEdit."
           }
         }
       }
@@ -1053,6 +1070,23 @@
         }
       }
     },
+    "Dictionary": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dictionary"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dictionnaire"
+          }
+        }
+      }
+    },
     "Disable Everywhere...": {
       "extractionState": "manual",
       "localizations": {
@@ -1151,6 +1185,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Terminé"
+          }
+        }
+      }
+    },
+    "Download": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Télécharger"
           }
         }
       }
@@ -1461,19 +1512,19 @@
         }
       }
     },
-    "Get better & more relevant suggestions (you'll need to quit & reopen Onit to activate permission)": {
+    "Get better & more relevant suggestions (you'll need to quit & reopen QuickEdit to activate permission)": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Get better & more relevant suggestions (you'll need to quit & reopen Onit to activate permission)"
+            "value": "Get better & more relevant suggestions (you'll need to quit & reopen QuickEdit to activate permission)"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obtenez de meilleures suggestions plus pertinentes (vous devrez quitter et rouvrir Onit pour activer la permission)"
+            "value": "Obtenez de meilleures suggestions plus pertinentes (vous devrez quitter et rouvrir QuickEdit pour activer la permission)"
           }
         }
       }
@@ -2041,19 +2092,19 @@
         }
       }
     },
-    "Open Onit automatically when you log into your computer.": {
+    "Open QuickEdit automatically when you log into your computer.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open Onit automatically when you log into your computer."
+            "value": "Open QuickEdit automatically when you log into your computer."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ouvrir Onit automatiquement lorsque vous vous connectez à votre ordinateur."
+            "value": "Ouvrir QuickEdit automatiquement lorsque vous vous connectez à votre ordinateur."
           }
         }
       }
@@ -2551,6 +2602,23 @@
         }
       }
     },
+    "Scan": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyser"
+          }
+        }
+      }
+    },
     "Screenshots Permissions": {
       "extractionState": "manual",
       "localizations": {
@@ -2564,6 +2632,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Permissions de capture d'écran"
+          }
+        }
+      }
+    },
+    "Search %lld Terms": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search %lld Terms"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rechercher %lld termes"
           }
         }
       }
@@ -3012,20 +3097,20 @@
         }
       }
     },
-    "This lets Onit load context and give relevant suggestions.": {
+    "This lets QuickEdit load context and give relevant suggestions.": {
       "comment": "Onboarding: Accessibility permission description",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This lets Onit load context and give relevant suggestions."
+            "value": "This lets QuickEdit load context and give relevant suggestions."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ceci permet à Onit de charger le contexte et de fournir des suggestions pertinentes."
+            "value": "Ceci permet à QuickEdit de charger le contexte et de fournir des suggestions pertinentes."
           }
         }
       }
@@ -3405,53 +3490,53 @@
         }
       }
     },
-    "You are subscribed to the Onit Pro 2-Week Trial!": {
+    "You are subscribed to the QuickEdit Pro 2-Week Trial!": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You are subscribed to the Onit Pro 2-Week Trial!"
+            "value": "You are subscribed to the QuickEdit Pro 2-Week Trial!"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous êtes abonné(e) à l'essai Onit Pro de 2 semaines !"
+            "value": "Vous êtes abonné(e) à l'essai QuickEdit Pro de 2 semaines !"
           }
         }
       }
     },
-    "You are subscribed to the Onit Pro plan!": {
+    "You are subscribed to the QuickEdit Pro plan!": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You are subscribed to the Onit Pro plan!"
+            "value": "You are subscribed to the QuickEdit Pro plan!"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous êtes abonné(e) au plan Onit Pro !"
+            "value": "Vous êtes abonné(e) au plan QuickEdit Pro !"
           }
         }
       }
     },
-    "You can enable and disable QuickEdit to appear in specific apps or websites from the menu bar. Click the Onit icon in the menu bar and select one of the \"Disable\" options for the currently active app or website.": {
+    "You can enable and disable QuickEdit to appear in specific apps or websites from the menu bar. Click the QuickEdit icon in the menu bar and select one of the \"Disable\" options for the currently active app or website.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You can enable and disable QuickEdit to appear in specific apps or websites from the menu bar. Click the Onit icon in the menu bar and select one of the \"Disable\" options for the currently active app or website."
+            "value": "You can enable and disable QuickEdit to appear in specific apps or websites from the menu bar. Click the QuickEdit icon in the menu bar and select one of the \"Disable\" options for the currently active app or website."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous pouvez activer et désactiver l'apparition de QuickEdit dans des applications ou sites web spécifiques depuis la barre de menu. Cliquez sur l'icône Onit dans la barre de menu et sélectionnez l'une des options « Désactiver » pour l'application ou le site web actuellement actif."
+            "value": "Vous pouvez activer et désactiver l'apparition de QuickEdit dans des applications ou sites web spécifiques depuis la barre de menu. Cliquez sur l'icône QuickEdit dans la barre de menu et sélectionnez l'une des options « Désactiver » pour l'application ou le site web actuellement actif."
           }
         }
       }
@@ -3473,19 +3558,19 @@
         }
       }
     },
-    "Your Onit subscription expires on %@.": {
+    "Your QuickEdit subscription expires on %@.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your Onit subscription expires on %@."
+            "value": "Your QuickEdit subscription expires on %@."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre abonnement Onit expire le %@."
+            "value": "Votre abonnement QuickEdit expire le %@."
           }
         }
       }
@@ -3541,6 +3626,23 @@
         }
       }
     },
+    "“%@” will be removed from your dictionary.": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%@” will be removed from your dictionary."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "« %@ » sera supprimé de votre dictionnaire."
+          }
+        }
+      }
+    },
     "⭐️ Pro": {
       "extractionState": "manual",
       "localizations": {
@@ -3571,108 +3673,6 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "⭐️ Pro – Essai 2 semaines"
-          }
-        }
-      }
-    },
-    "Back": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retour"
-          }
-        }
-      }
-    },
-    "Dictionary": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dictionary"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dictionnaire"
-          }
-        }
-      }
-    },
-    "Download": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Download"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Télécharger"
-          }
-        }
-      }
-    },
-    "Scan": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scan"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Analyser"
-          }
-        }
-      }
-    },
-    "Search %lld Terms": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search %lld Terms"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rechercher %lld termes"
-          }
-        }
-      }
-    },
-    "“%@” will be removed from your dictionary.": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "“%@” will be removed from your dictionary."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "« %@ » sera supprimé de votre dictionnaire."
           }
         }
       }
