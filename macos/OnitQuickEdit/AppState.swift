@@ -15,9 +15,13 @@ import SwiftUI
 @Observable
 class AppState: NSObject, SPUUpdaterDelegate {
     // MARK: - Singleton
-    
+
     static let shared = AppState()
-    
+
+    /// Custom URL scheme registered in Info.plist (CFBundleURLSchemes).
+    /// Used for deeplinks and the magic-link login callback.
+    static let urlScheme = "onit-quickedit"
+
     private var modelProvidersManager = ModelProvidersManager.shared
     private var authManager = AuthManager.shared
     
@@ -261,7 +265,11 @@ class AppState: NSObject, SPUUpdaterDelegate {
     }
     
     func handleDeeplink(_ url: URL) {
-        guard url.scheme == "onit" else {
+        // Must match the custom URL scheme registered in Info.plist
+        // (CFBundleURLSchemes). This was "onit" in onit-beacon; QuickEdit
+        // registers "onit-quickedit", so the magic-link / deeplink callbacks
+        // arrive with that scheme.
+        guard url.scheme == AppState.urlScheme else {
             return
         }
         
@@ -352,15 +360,6 @@ class AppState: NSObject, SPUUpdaterDelegate {
 // MARK: - App Update Listeners
 
 extension AppState {
-    func removeDiscordFooterNotifications() {
-        Defaults[.footerNotifications].removeAll { notification in
-            if case .discord = notification {
-                return true
-            }
-            return false
-        }
-    }
-    
     func checkForAvailableUpdateWithDownload() {
         self.updater.updater.checkForUpdates()
     }
