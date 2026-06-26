@@ -29,7 +29,7 @@ set -euo pipefail
 
 # ───────────────────────── Configuration ─────────────────────────
 APP_NAME="QuickEdit"
-GH_REPO="synth-inc/onit-quickedit"
+GH_REPO="synth-inc/quickedit"
 SPARKLE_ACCOUNT="onit-quickedit"
 CASK_NAME="onit-quickedit"
 TAP_DIR="${TAP_DIR:-$HOME/SynthInc/homebrew-tap}"

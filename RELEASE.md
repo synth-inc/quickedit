@@ -5,7 +5,7 @@ distributed through **GitHub Releases**, and the app reads a signed `appcast.xml
 served from `main`:
 
 ```
-SUFeedURL     = https://raw.githubusercontent.com/synth-inc/onit-quickedit/main/appcast.xml
+SUFeedURL     = https://raw.githubusercontent.com/synth-inc/quickedit/main/appcast.xml
 SUPublicEDKey = JvakSJYchpK2hlMelMSUtERxqp+dGL/Nz30G24gu9Q8=   (Info.plist)
 ```
 
