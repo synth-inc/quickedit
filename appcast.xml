@@ -1,9 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
     <channel>
         <title>QuickEdit</title>
         <link>https://raw.githubusercontent.com/synth-inc/onit-quickedit/main/appcast.xml</link>
         <description>Most recent updates to QuickEdit</description>
         <language>en</language>
+        <item>
+            <title>1.0</title>
+            <pubDate>Fri, 26 Jun 2026 13:28:03 -0700</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/synth-inc/quickedit/releases/download/v1.0/QuickEdit-1.0.dmg" length="11688322" type="application/octet-stream" sparkle:edSignature="UygXcIA7RxFT2fkxb5tqkMz1PmflfusNOC96b3xUw4rx/lQLp7kuysR6SoYtUQSzoUUgyC8pcjvBGf/3DOjMAA=="/>
+        </item>
     </channel>
 </rss>
