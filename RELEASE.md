@@ -6,7 +6,7 @@ served from `main`:
 
 ```
 SUFeedURL     = https://raw.githubusercontent.com/synth-inc/quickedit/main/appcast.xml
-SUPublicEDKey = JvakSJYchpK2hlMelMSUtERxqp+dGL/Nz30G24gu9Q8=   (Info.plist)
+SUPublicEDKey = sY3ZhtX5dXWpT2Jo7H3qQjEoty2M6/vsJnDsaupc78M=   (Info.plist)
 ```
 
 > ⚠️ The feed is served by `raw.githubusercontent.com`, so **the repository must be
