@@ -667,23 +667,6 @@
         }
       }
     },
-    "Join Discord": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Join Discord"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rejoindre Discord"
-          }
-        }
-      }
-    },
     "Loading context from %@...": {
       "comment": "A loading indicator while the context is being loaded. The string inside the indicator is replaced with the name of the app.",
       "extractionState": "stale",

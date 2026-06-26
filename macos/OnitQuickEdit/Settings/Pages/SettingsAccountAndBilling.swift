@@ -195,9 +195,9 @@ struct SettingsAccountAndBilling: View {
             VStack(alignment: .leading, spacing: 1) {
                 if !appState.subscriptionCanceled {
                     if planType == SubscriptionStatus.active {
-                        captionText(String.localized("You are subscribed to the Onit Pro plan!", table: "Settings"))
+                        captionText(String.localized("You are subscribed to the QuickEdit Pro plan!", table: "Settings"))
                     } else if planType == SubscriptionStatus.trialing {
-                        captionText(String.localized("You are subscribed to the Onit Pro 2-Week Trial!", table: "Settings"))
+                        captionText(String.localized("You are subscribed to the QuickEdit Pro 2-Week Trial!", table: "Settings"))
                     }
                 }
 
@@ -347,7 +347,7 @@ struct SettingsAccountAndBilling: View {
         if let subscriptionCanceled = appState.subscription?.cancelAtPeriodEnd,
            subscriptionCanceled
         {
-            return String(format: String.localized("Your Onit subscription expires on %@.", table: "Settings"), renewalDate)
+            return String(format: String.localized("Your QuickEdit subscription expires on %@.", table: "Settings"), renewalDate)
         } else {
             return nil
         }

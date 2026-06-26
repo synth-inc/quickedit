@@ -157,7 +157,7 @@ struct SettingsQuickEditDev: View {
         case .remote:
             if let model = quickEditRemoteModel {
                 let hasToken = TokenValidationManager.getTokenForModel(model) != nil
-                return hasToken ? String.localized("Using your API token", table: "QuickEdit") : String.localized("Using remote AI model via Onit servers", table: "QuickEdit")
+                return hasToken ? String.localized("Using your API token", table: "QuickEdit") : String.localized("Using remote AI model via QuickEdit servers", table: "QuickEdit")
             }
             return String.localized("Select a remote model", table: "QuickEdit")
         case .local:
