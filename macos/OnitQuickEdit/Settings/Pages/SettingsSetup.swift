@@ -75,7 +75,7 @@ struct SettingsSetup: View {
 
     var body: some View {
         SettingsTitleView(
-            text: String.localized("Complete the setup list to ensure Onit works seamlessly.", table: "Settings")
+            text: String.localized("Complete the setup list to ensure QuickEdit works seamlessly.", table: "Settings")
         )
 
         requiredSection
@@ -101,7 +101,7 @@ struct SettingsSetup: View {
 
             section(
                 title: String.localized("Accessibility Permissions", table: "Settings"),
-                caption: String.localized("This lets Onit load context and give relevant suggestions.", table: "Settings"),
+                caption: String.localized("This lets QuickEdit load context and give relevant suggestions.", table: "Settings"),
                 status: SectionStatus(
                     icon: self.grantedAccessibility ? .checkCircle : .warningCircle,
                     color: self.grantedAccessibility ? Color.lime400 : Color.red500
@@ -119,7 +119,7 @@ struct SettingsSetup: View {
 
             section(
                 title: String.localized("Screenshots Permissions", table: "Settings"),
-                caption: String.localized("Get better & more relevant suggestions (you'll need to quit & reopen Onit to activate permission)", table: "Settings"),
+                caption: String.localized("Get better & more relevant suggestions (you'll need to quit & reopen QuickEdit to activate permission)", table: "Settings"),
                 status: SectionStatus(
                     icon: self.grantedScreenshotPermission ? .checkCircle : .warningCircle,
                     color: self.grantedScreenshotPermission ? Color.lime400 : Color.red500

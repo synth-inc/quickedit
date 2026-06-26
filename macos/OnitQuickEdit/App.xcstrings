@@ -426,23 +426,6 @@
         }
       }
     },
-    "Discord Community": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Discord Community"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Communauté Discord"
-          }
-        }
-      }
-    },
     "Display name": {
       "extractionState": "manual",
       "localizations": {

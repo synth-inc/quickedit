@@ -15,7 +15,6 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
     /// Common Steps
     case featureSelection
     case permissions
-    case discord
 
     /// Feature Step: QuickEdit
     case quickEditDemo
@@ -26,12 +25,6 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
     case complete
 
     // MARK: - Feature-Specific Steps
-
-    static let commonSteps: [OnboardingStep] = [
-//        .featureSelection,
-        .permissions,
-        .discord
-    ]
 
     static let quickEditSteps: [OnboardingStep] = [
         .quickEditDemo
@@ -67,10 +60,6 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
 
         if quickEditTranslationEnabled && !quickEditTranslationOnboardingCompleted {
             result.append(contentsOf: quickEditTranslationSteps)
-        }
-
-        if !mainOnboardingCompleted {
-            result.append(.discord)
         }
 
         result.append(.complete)
@@ -166,9 +155,7 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
         case .featureSelection:
             return String.localized("Welcome to QuickEdit", table: "Onboarding")
         case .permissions:
-            return String.localized("Grant access to unlock all tools", table: "Onboarding")
-        case .discord:
-            return String.localized("Join our Discord Server!", table: "Onboarding")
+            return String.localized("Grant access to unlock QuickEdit", table: "Onboarding")
 
         /// Feature Step: QuickEdit
         case .quickEditDemo:
@@ -190,8 +177,6 @@ enum OnboardingStep: String, CaseIterable, Codable, Defaults.Serializable {
             return String.localized("Choose the features you want to enable.", table: "Onboarding")
         case .permissions:
             return "Permissions are needed for QuickEdit to work."
-        case .discord:
-            return String.localized("Say hello to the team and other Onit users, get updates\nand give feedback.", table: "Onboarding")
 
         /// Feature Step: QuickEdit
         case .quickEditDemo:
