@@ -119,5 +119,5 @@ This builds, notarizes, publishes a GitHub Release (with a stable `QuickEdit.dmg
 ---
 
 <div align="center">
-Made by <a href="https://www.getonit.ai">Synthetic Exploration, Inc.</a>
+Made by <a href="https://www.getonit.ai/edit">Synthetic Exploration, Inc.</a>
 </div>
