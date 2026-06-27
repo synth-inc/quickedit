@@ -13,6 +13,10 @@ Select text anywhere, hit a shortcut (or click the hint), describe the change, a
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)](LICENSE.md)
 ![Platform](https://img.shields.io/badge/platform-macOS-black?logo=apple)
 
+<br>
+
+<img src="docs/demo.gif" alt="QuickEdit demo" width="720">
+
 </div>
 
 ---
