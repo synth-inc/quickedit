@@ -117,8 +117,10 @@ struct QuickEditHintView: View {
             .resizable()
             .renderingMode(.template)
             .aspectRatio(contentMode: .fit)
-            .frame(width: 18, height: 18)
+            .frame(width: 12, height: 12)
             .foregroundStyle(Color.S_0)
+            .padding(3)
+            .frame(width: 18, height: 18)
     }
 
     private struct ActionButton: View {

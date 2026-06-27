@@ -110,6 +110,11 @@ if [ "$NO_PUSH" = false ]; then
         --title "$APP_NAME $VERSION" --generate-notes
     fi
   fi
+
+  # Also publish a stable-named asset so the "latest" permalink stays version-agnostic:
+  #   https://github.com/$GH_REPO/releases/latest/download/$APP_NAME.dmg
+  cp "$WORK/$DMG_VERSIONED" "$WORK/$APP_NAME.dmg"
+  gh release upload "$TAG" "$WORK/$APP_NAME.dmg" --repo "$GH_REPO" --clobber
 fi
 
 # ───────────────────────── Generate & sign appcast ─────────────────────────
