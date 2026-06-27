@@ -113,8 +113,10 @@ if [ "$NO_PUSH" = false ]; then
 
   # Also publish a stable-named asset so the "latest" permalink stays version-agnostic:
   #   https://github.com/$GH_REPO/releases/latest/download/$APP_NAME.dmg
-  cp "$WORK/$DMG_VERSIONED" "$WORK/$APP_NAME.dmg"
-  gh release upload "$TAG" "$WORK/$APP_NAME.dmg" --repo "$GH_REPO" --clobber
+  # NOTE: keep this OUT of $WORK — generate_appcast rejects duplicate archives.
+  STABLE_DIR="$BUILD_DIR/stable"; mkdir -p "$STABLE_DIR"
+  cp "$WORK/$DMG_VERSIONED" "$STABLE_DIR/$APP_NAME.dmg"
+  gh release upload "$TAG" "$STABLE_DIR/$APP_NAME.dmg" --repo "$GH_REPO" --clobber
 fi
 
 # ───────────────────────── Generate & sign appcast ─────────────────────────
