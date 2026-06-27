@@ -113,10 +113,12 @@ struct QuickEditHintView: View {
     // MARK: - Child Components
 
     private var logo: some View {
-        Image(.logo)
+        Image(.noodle)
             .resizable()
+            .renderingMode(.template)
+            .aspectRatio(contentMode: .fit)
             .frame(width: 18, height: 18)
-            .cornerRadius(6)
+            .foregroundStyle(Color.S_0)
     }
 
     private struct ActionButton: View {
