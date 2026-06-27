@@ -6,6 +6,14 @@
         <description>Most recent updates to QuickEdit</description>
         <language>en</language>
         <item>
+            <title>1.0.1</title>
+            <pubDate>Fri, 26 Jun 2026 17:37:04 -0700</pubDate>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/synth-inc/quickedit/releases/download/v1.0.1/QuickEdit-1.0.1.dmg" length="11689025" type="application/octet-stream" sparkle:edSignature="aDUcpH1feXUHqjox2dS5B9sPHW9+s+7Vf5yjulUBWtDKcCGaBsd9GxuagtPDpAiAxfb7uK8EUfBB69/4HaPlAw=="/>
+        </item>
+        <item>
             <title>1.0</title>
             <pubDate>Fri, 26 Jun 2026 13:28:03 -0700</pubDate>
             <sparkle:version>1</sparkle:version>
